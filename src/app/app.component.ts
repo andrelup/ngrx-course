@@ -25,6 +25,10 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+      const userProfile = localStorage.getItem("user");
+      if(userProfile) {
+        localStorage.setItem('user', JSON.parse(userProfile))
+      }
 
       this.router.events.subscribe(event  => {
         switch (true) {
