@@ -1,4 +1,5 @@
-import { createAction } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
+import { Course } from "./model/course";
 
 
 export const loadAllCourses = createAction(
@@ -6,5 +7,6 @@ export const loadAllCourses = createAction(
 );
 
 export const allCoursesLoaded = createAction(
-    "[Load Courses Effect] All courses Loaded"
+    "[Load Courses Effect] All courses Loaded",
+    props<{courses: Course[]}>
 );
