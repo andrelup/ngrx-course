@@ -21,12 +21,11 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {RouterModule, Routes} from '@angular/router';
-import { EntityDataService, EntityDefinitionService, EntityMetadataMap} from '@ngrx/data';
-import {compareCourses, Course} from './model/course';
+import {EffectsModule } from '@ngrx/effects';
+import {StoreModule } from '@ngrx/store';
 
-import {compareLessons, Lesson} from './model/lesson';
+import { coursesReducer } from './reducers/course.reducers';
 import { CoursesResolver } from './courses.resolver';
-import { EffectsModule } from '@ngrx/effects';
 import { CoursesEffects } from './courses.effects';
 
 
@@ -65,7 +64,8 @@ export const coursesRoutes: Routes = [
     MatMomentDateModule,
     ReactiveFormsModule,
     RouterModule.forChild(coursesRoutes),
-    EffectsModule.forFeature([CoursesEffects])
+    EffectsModule.forFeature([CoursesEffects]),
+    StoreModule.forFeature("courses", coursesReducer)
   ],
   declarations: [
     HomeComponent,
